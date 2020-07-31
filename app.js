@@ -29,7 +29,15 @@ mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
-mongoose.connect("mongodb://localhost/yelp_camp");
+mongoose.connect("mongodb+srv://Jovimiad:Jad9inI10J18@cluster0.wojz9.mongodb.net/<dbname>?retryWrites=true&w=majority", {
+    useNewUrlParser: true,
+    useCreateIndex: true,  
+}).then(() => {
+    console.log("Connected to DB!")
+}).catch(err => {
+    console.log("ERROR:", err.message);
+});
+// mongoose.connect("mongodb://localhost/yelp_camp");
 
 app.locals.moment = require('moment');
 
