@@ -18,6 +18,8 @@ var commentRoutes = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"),
     indexRoutes = require("./routes/index")
 
+var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp";
+    
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
@@ -29,7 +31,7 @@ mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
-mongoose.connect("mongodb+srv://Jovimiad:Jad9inI10J18@cluster0.wojz9.mongodb.net/<dbname>?retryWrites=true&w=majority", {
+mongoose.connect(url, {
     useNewUrlParser: true,
     useCreateIndex: true,  
 }).then(() => {
